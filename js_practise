@@ -1,0 +1,19 @@
+var once = function(fn) {
+    let callOnce = false;
+    let result;
+
+    return function(...args){
+        if(!callOnce) {
+            result = fn(...args);
+            callOnce = true;
+            return result
+        } else {
+            return undefined;
+        }
+    }
+};
+
+/**
+ * let fn = (a,b,c) => (a + b + c)
+ * let onceFn = once(fn)
+ */
